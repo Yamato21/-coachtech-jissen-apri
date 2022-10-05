@@ -26,3 +26,10 @@ Route::get('/update{id,task_name}', [todoController::class, 'edit']);
 Route::post('/update{id,task_name}', [todoController::class, 'update']);
 Route::get('/delete{id}', [todoController::class, 'delete']);
 Route::post('/delete{id}', [todoController::class, 'remove']);
+
+    public function create(todoRequest $request)
+    {
+        $form = $request->all();
+        Author::create($form);
+        return redirect('/');
+    }

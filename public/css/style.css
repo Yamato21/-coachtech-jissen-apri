@@ -50,8 +50,10 @@ text-align: left;
   transition: 0.4s;
   outline: none;
 }
-.itiran{
-  display: block;
+
+.tr{
+  
+
 }
 
 .th{
@@ -60,14 +62,17 @@ text-align: left;
         font-weight: bold;
 }
 
-.table{
-      text-align: center;
-      width: 100%;
-      border-collapse: collapse;
-      border-spacing: 0;
-
+.table {
+  text-align: center;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0px 50px;
+  text-indent: initial;
+  display: flex;
+  justify-content: space-evenly;
 }
 .upd{
+
       text-align: left;
         border: 2px solid #fa9770;
         font-size: 12px;

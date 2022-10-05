@@ -8,8 +8,30 @@ use App\Http\Requests\todoRequest;
 
 class todoController extends Controller
 {
-    public function index(Request $Request) {
+    public function index() {
     $indexs = todo::all();
-    return view('index',['indexs',$indexs]);
+    return view('index',['indexs' => $indexs]);
+    }
+
+    public function create(todoRequest $request)
+    {
+        $form = $request->all();
+        todo::create($form);
+        return redirect('/');
+    }
+
+    public function update(todoRequest $request)
+    {
+        $form = $request->all();
+        unset($form['_token']);
+        Author::where('id', $request->id)->update($form);
+        return redirect('/');
+    }
+
+    public function delete(Request $request)
+    {
+        $id = todo::find($request->id);
+        $id->delete();
+        return redirect('/');
     }
 }
