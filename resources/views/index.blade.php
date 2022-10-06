@@ -33,7 +33,9 @@
           @if ($indexs->isNotEmpty())
           @foreach($indexs as $index)
           <td class="day">{{$index->created_at}}</td>
-          <td class="task">{{$index->task_name}}</td>
+          <td>
+            <input type="text" class="task" size="40" value={{$index->task_name}}>
+          </td>
           <td>
           <form action="/update{id,task_name}" method="post">
           @csrf
@@ -44,9 +46,9 @@
           @csrf
           <button class="del">削除</button>
           </td>
-          @endforeach
-          @endif
         </tr>
+         @endforeach
+          @endif
       </table>
     </div>
   </div>
