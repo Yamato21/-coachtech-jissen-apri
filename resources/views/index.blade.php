@@ -12,17 +12,18 @@
   <style>
   </style>
 </head>
-
 <body>
   <div class="all">
     <div class="card">
-      <h1 class="title">Todolist</h1>
-      <form action="/create{taskname}" method="post" class="flex">
+      <div class="top">
+        <h1 class="title">Todo list</h1>
+        <form action="/create{taskname}" method="post" class="flex">
         @csrf
         <input class="border" type="text" name="task_name">
         <input class="plus" type="submit" name="buttton_task" value="追加">
-      </form>
-      <table class="List">
+        </form>
+       </div>
+       <table class="List">
         <tr class="tble">
           <th class="createday">作成日</th>
           <th class="task_date">タスク名</th>
@@ -30,25 +31,25 @@
           <th class="sakujyo">削除</th>
         </tr>
         <tr>
-          @if ($indexs->isNotEmpty())
-          @foreach($indexs as $index)
+        @if ($indexs->isNotEmpty())
+        @foreach($indexs as $index)
           <td>{{$index->created_at}}</td>
           <td>
-           <form action="/update{{$index->id}}" method="post" class="Upd_form">
-              @csrf
+          <form action="/update{{$index->id}}" method="post" class="Upd_form">
+            @csrf
             <input class="task" type="text" name="task_name" size="50" value={{$index->task_name}}>
           </td>
           <td>
-              <button class="upd">更新</button>
+            <button class="upd">更新</button>
           </td>
           </form>
           <td>
             <form action="/delete{{$index->id}}" method="post" >
-            @csrf
-            <button class="del">削除</button>
+             @csrf
+              <button class="del">削除</button>
             </form>
           </td>
-        </tr>
+          </tr>
          @endforeach
         @endif
       </table>
