@@ -46,17 +46,6 @@
   outline: none;
 }
 
-.List{
-  display: table;
-  table-layout: fixed;
-  text-align: center;
-  width: 100%;
-}
-
-.th td{
-  display: table-cell;
-  vertical-align: middle;
-}
 
 
 .upd {
@@ -96,10 +85,13 @@
   font-size: 14px;
   outline: none;
   width: 90%;
-  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.day{
-  display: inline-block;
-  text-align: center;
+td{
+margin-top: 20px;
+margin-bottom: 20px;
+text-align: center;
 }
+

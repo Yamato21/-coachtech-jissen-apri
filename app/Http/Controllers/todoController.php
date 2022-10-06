@@ -31,7 +31,7 @@ class todoController extends Controller
     public function delete(Request $request)
     {
         $id = todo::find($request->id);
-        $id->delete();
+        $id -> delete();
         return redirect('/');
     }
 }
