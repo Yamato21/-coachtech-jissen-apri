@@ -34,16 +34,16 @@
           @foreach($indexs as $index)
           <td>{{$index->created_at}}</td>
           <td>
-           <form action="/update{id,task_name}" method="post" class="Upd_form" name="task_name">
+           <form action="/update{{$index->id}}" method="post" class="Upd_form">
               @csrf
-            <input class="task" type="text"  size="50" value={{$index->task_name}}>
+            <input class="task" type="text" name="task_name" size="50" value={{$index->task_name}}>
           </td>
           <td>
               <button class="upd">更新</button>
           </td>
           </form>
           <td>
-            <form action="/delete{id}" method="post" >
+            <form action="/delete{{$index->id}}" method="post" >
             @csrf
             <button class="del">削除</button>
             </form>
