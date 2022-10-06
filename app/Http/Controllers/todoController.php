@@ -13,18 +13,18 @@ class todoController extends Controller
     return view('index',['indexs' => $indexs]);
     }
 
-    public function create(todoRequest $request)
+    public function create(Request $request)
     {
         $form = $request->all();
         todo::create($form);
         return redirect('/');
     }
 
-    public function update(todoRequest $request)
+    public function update(Request $request)
     {
         $form = $request->all();
         unset($form['_token']);
-        Author::where('id', $request->id)->update($form);
+        todo::where('id', $request->id)->update($form);
         return redirect('/');
     }
 

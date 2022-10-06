@@ -23,14 +23,12 @@
         <input class="plus" type="submit" name="buttton_task" value="追加">
       </form>
       <table class="List">
-        <div class="mdiasi"></div>
         <tr class="tble">
           <th class="createday">作成日</th>
           <th class="task_date">タスク名</th>
           <th class="kousin">更新</th>
           <th class="sakujyo">削除</th>
         </tr>
-          <div class="naiyou">
         <tr>
           @if ($indexs->isNotEmpty())
           @foreach($indexs as $index)
@@ -49,9 +47,8 @@
           @endforeach
           @endif
         </tr>
-        </div>
-    </table>
-  </div>
+      </table>
+    </div>
   </div>
 </body>
 </html>
