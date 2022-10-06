@@ -21,5 +21,5 @@ use Illuminate\Http\Request;
 */
 Route::get('/', [todoController::class, 'index']);
 Route::post('/create{task_name}', [todoController::class, 'create']);
-Route::post('/update{id}', [todoController::class, 'update']);
+Route::post('/update{id,task_name}', [todoController::class, 'update']);
 Route::post('/delete{id}', [todoController::class, 'delete']);
