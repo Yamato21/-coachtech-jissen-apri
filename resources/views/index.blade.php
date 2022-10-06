@@ -34,10 +34,10 @@
           @foreach($indexs as $index)
           <td class="day">{{$index->created_at}}</td>
           <td>
-            <input type="text" class="task" size="40" value={{$index->task_name}}>
+            <input type="text" class="task" size="50" value={{$index->task_name}}>
           </td>
           <td>
-          <form action="/update{id,task_name}" method="post">
+          <form action="/update{id}" method="post">
           @csrf
           <button class="upd">更新</button>
           </td>
@@ -48,7 +48,7 @@
           </td>
         </tr>
          @endforeach
-          @endif
+        @endif
       </table>
     </div>
   </div>
