@@ -35,7 +35,7 @@ class todoRequest extends FormRequest
       public function messages()
     {
         return [
-            'task_name.max:20' => '必須・最大20文字以内',
+            'task_name.max:20' => '最大20文字以内',
         ];
     }
 }
