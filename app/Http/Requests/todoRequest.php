@@ -32,7 +32,7 @@ class todoRequest extends FormRequest
     {
         return [
             'task_name.required' => '必須',
-            'task_name.max:20' => '20文字以内'
+            'task_name.max' => '20文字以内'
         ];
     }
 }
