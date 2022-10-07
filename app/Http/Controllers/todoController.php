@@ -13,14 +13,14 @@ class todoController extends Controller
     return view('index',['indexs' => $indexs]);
     }
 
-    public function create(Request $request)
+    public function create(todoRequest $request)
     {
         $form = $request->all();
         todo::create($form);
         return redirect('/');
     }
 
-    public function update(Request $request)
+    public function update(todoRequest $request)
     {
         $form = $request->all();
         unset($form['_token']);

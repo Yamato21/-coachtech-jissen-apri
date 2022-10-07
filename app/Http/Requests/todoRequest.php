@@ -13,11 +13,7 @@ class todoRequest extends FormRequest
      */
     public function authorize()
     {
-        if ($this->path() == '/') {
             return true;
-        } else {
-            return false;
-        }
     }
 
     /**
@@ -35,7 +31,8 @@ class todoRequest extends FormRequest
       public function messages()
     {
         return [
-            'task_name.max:20' => '最大20文字以内',
+            'task_name.required' => '必須',
+            'task_name.max:20' => '20文字以内'
         ];
     }
 }
