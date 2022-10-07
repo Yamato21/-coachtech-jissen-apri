@@ -21,7 +21,10 @@
         @csrf
         <input class="border" type="text" name="task_name">
         <input class="plus" type="submit" name="buttton_task" value="追加">
-        </form>
+        @error('task_name')
+        <p>{{$message}}</p>
+        @enderror
+      </form>
        </div>
        <table class="List">
         <tr class="tble">
