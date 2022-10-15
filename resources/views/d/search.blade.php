@@ -22,7 +22,7 @@
             <input class="btn_logout" type="submit" value="ログアウト">
           </form>
         </div>
-        <form action="/find{task_name,tag_id}" method="get" class="flex">
+        <form action="/find{task_name,tag_id}" method="post" class="flex">
         @csrf
         <input class="border" type="text" name="task_name">
         <input class="search" type="submit" value="検索">
@@ -40,34 +40,19 @@
           <th class="sakujyo">削除</th>
         </tr>
         <tr>
-        <td></td>
-               <form action="/update" method="post" class="Upd_form">
-            @csrf
-            <input class="task" type="text" name="task_name" size="50" value=    return view('search', [
-         $searchs = 'searchs'
-        ]);>
-          </td>
-          <td>
-            <select name="tag_id" class="select-tag" value={$task_name->tag_id}}>
-              <option value="1">家事</option>
-              <option value="2">勉強</option>
-              <option value="3">運動</option>
-              <option value="4">食事</option>
-              <option value="5">移動</option>
-            </select>
-          <td>
-            <button class="upd">更新</button>
-          </td>
-          </form>
-          <td>
-            <form action="}}" method="post" >
-             @csrf
-              <button class="del">削除</button>
-            </form>
-          </td>
-          </tr>
+          @foreach($searchs as $search)
+        <td>{{$search->createdday}} </td>
+        <td>{{$search->task_name}}></td>
+        <td>{{$search->tag_id}}>
+        <td>
+           <button class="upd">更新</button>
+        </td>
+        <td>
+            <button class="del">削除</button>
+        </td>
+       </tr>
         </tr>
-
+        @endforeach
       </table>
       <a class="btn_back" href="/">戻る</a>
     </div>

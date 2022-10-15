@@ -15,17 +15,31 @@
     <div class="card">
       <div class="top">
         <div class="header">
-          <h1 class="title">Todo list</h1>
+          <h1 class="title">タスク検索</h1>
+          @if (Auth::check())
+       <p>「{{$user->name}}」でログイン中</p>
+        @else
+        <a href="/login">ログイン</a>
+  　　　 <a href="/register">登録</a>
+@endif
           <form method="post" action="/logout">
             @csrf
             <p class="login"></p>
             <input class="btn_logout" type="submit" value="ログアウト">
           </form>
         </div>
-        <form action="/find{task_name,tag_id}" method="post" class="flex">
+        <form action="/find{task_name,tag_id,user_id}" method="get" class="flex">
         @csrf
         <input class="border" type="text" name="task_name">
-        <input class="search" type="submit" value="検索">
+        <select name="tag_id" class="select-tag">
+          <option value="0"></option>
+          <option value="1">家事</option>
+          <option value="2">勉強</option>
+          <option value="3">運動</option>
+          <option value="4">食事</option>
+          <option value="5">移動</option>
+        </select>
+        <input class="plus" type="submit" name="buttton_search" value="検索">
         @error('task_name')
         <p>{{$message}}</p>
         @enderror
@@ -40,23 +54,43 @@
           <th class="sakujyo">削除</th>
         </tr>
         <tr>
-          @foreach($searchs as $search)
-        <td> {{$search->createdday}} </td>
-        <td>{{$search->task_name}}></td>
-        <td>{{$search->tag_id}}>
-        <td>
-           <button class="upd">更新</button>
-        </td>
-        <td>
-            <button class="del">削除</button>
-        </td>
-       </tr>
-        </tr>
-        @endforeach
+        @foreach($searchs as $search)
+          <td>{{$search->created_at}}</td>
+          <td>
+          <form action="/update{{$index->id}}" method="post" class="Upd_form">
+            @csrf
+            <input class="task" type="text" name="task_name" size="50" value={{$search->task_name}}>
+          </td>
+          <td>
+            <select name="tag_id" class="select-tag" value={{$search->task_name}}>
+              <option value="0"></option>
+              <option value="1">家事</option>
+              <option value="2">勉強</option>
+              <option value="3">運動</option>
+              <option value="4">食事</option>
+              <option value="5">移動</option>
+            </select>
+          <td>
+            <button class="upd">更新</button>
+          </td>
+          </form>
+          <td>
+            <form action="/delete{{$index->id}}" method="post" >
+             @csrf
+              <button class="del">削除</button>
+            </form>
+          </td>
+          </tr>
+         @endforeach
       </table>
-      <a class="btn_back" href="/">戻る</a>
+      <a class="btn_back" href="/home">戻る</a>
     </div>
   </div>
 </body>
 </html>
+①　ユーザー認証を設定してindexアクションで$userを設定してviewに送ろうとしたが送れないがどうすればよいか
+②　$searchsをviewに送れないためどうすればよいか
+③　search.bladeで作成日を設定する際$searchではcreated_atを引っ張れないためどうすればよいか
+④　明日までに現段階でどこを修正すればよいか
 
+以上4点多いですが、よろしくお願いします。
