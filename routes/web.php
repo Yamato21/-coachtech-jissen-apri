@@ -23,3 +23,5 @@ Route::get('/', [todoController::class, 'index']);
 Route::post('/create{task_name}', [todoController::class, 'create']);
 Route::post('/update{id}', [todoController::class, 'update']);
 Route::post('/delete{id}', [todoController::class, 'delete']);
+Route::post('/find{task_name、tag_id}', [todoController::class, 'find']);
+Route::get('/find', [todoController::class, 'search']);

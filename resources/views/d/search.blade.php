@@ -22,18 +22,10 @@
             <input class="btn_logout" type="submit" value="ログアウト">
           </form>
         </div>
-        <a class="btn_search" href="/find">タスク検索</a>
-        <form action="/create{taskname}" method="post" class="flex">
+        <form action="/find{task_name,tag_id}" method="get" class="flex">
         @csrf
         <input class="border" type="text" name="task_name">
-        <select name="tag_id" class="select-tag">
-          <option value="1">家事</option>
-          <option value="2">勉強</option>
-          <option value="3">運動</option>
-          <option value="4">食事</option>
-          <option value="5">移動</option>
-        </select>
-        <input class="plus" type="submit" name="buttton_task" value="追加">
+        <input class="search" type="submit" value="検索">
         @error('task_name')
         <p>{{$message}}</p>
         @enderror
@@ -48,16 +40,15 @@
           <th class="sakujyo">削除</th>
         </tr>
         <tr>
-        @if ($indexs->isNotEmpty())
-        @foreach($indexs as $index)
-          <td>{{$index->created_at}}</td>
-          <td>
-          <form action="/update{{$index->id}}" method="post" class="Upd_form">
+        <td></td>
+               <form action="/update" method="post" class="Upd_form">
             @csrf
-            <input class="task" type="text" name="task_name" size="50" value={{$index->task_name}}>
+            <input class="task" type="text" name="task_name" size="50" value=    return view('search', [
+         $searchs = 'searchs'
+        ]);>
           </td>
           <td>
-            <select name="tag_id" class="select-tag">
+            <select name="tag_id" class="select-tag" value={$task_name->tag_id}}>
               <option value="1">家事</option>
               <option value="2">勉強</option>
               <option value="3">運動</option>
@@ -69,17 +60,18 @@
           </td>
           </form>
           <td>
-            <form action="/delete{{$index->id}}" method="post" >
+            <form action="}}" method="post" >
              @csrf
               <button class="del">削除</button>
             </form>
           </td>
           </tr>
-         @endforeach
-        @endif
+        </tr>
+
       </table>
       <a class="btn_back" href="/">戻る</a>
     </div>
   </div>
 </body>
 </html>
+

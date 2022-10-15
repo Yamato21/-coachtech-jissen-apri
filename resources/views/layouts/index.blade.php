@@ -22,7 +22,7 @@
             <input class="btn_logout" type="submit" value="ログアウト">
           </form>
         </div>
-        <a class="btn_search" href="/find">タスク検索</a>
+        <a class="btn_search" href="">タスク検索</a>
         <form action="/create{taskname}" method="post" class="flex">
         @csrf
         <input class="border" type="text" name="task_name">
@@ -78,7 +78,6 @@
          @endforeach
         @endif
       </table>
-      <a class="btn_back" href="/">戻る</a>
     </div>
   </div>
 </body>
