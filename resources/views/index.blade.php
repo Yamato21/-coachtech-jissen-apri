@@ -17,12 +17,11 @@
         <div class="header">
           <h1 class="title">Todo list</h1>
           @if (Auth::check())
-       <p>「{{$user->name}}」でログイン中</p>
+          <p>「{{$user->name}}」でログイン中</p>
         @else
         <a href="/login">ログイン</a>
   　　　 <a href="/register">登録</a>
-@endif
-          <p>「{{$user->name}}」でログイン中</p>
+        @endif
           <form method="post" action="/logout">
             @csrf
             <p class="login"></p>
@@ -30,7 +29,7 @@
           </form>
         </div>
         <a class="btn_search" href="/find">タスク検索</a>
-        <form action="/create{task_name,tag_id}" method="post" class="flex">
+        <form action="/create{task_name,tag_id,user_id}" method="post" class="flex">
         @csrf
         <input class="border" type="text" name="task_name">
         <select name="tag_id" class="select-tag">

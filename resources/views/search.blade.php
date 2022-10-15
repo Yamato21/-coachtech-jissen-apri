@@ -16,12 +16,7 @@
       <div class="top">
         <div class="header">
           <h1 class="title">タスク検索</h1>
-          @if (Auth::check())
-       <p>「{{$user->name}}」でログイン中</p>
-        @else
-        <a href="/login">ログイン</a>
-  　　　 <a href="/register">登録</a>
-@endif
+         <p>「{{$user->name}}」でログイン中</p>
           <form method="post" action="/logout">
             @csrf
             <p class="login"></p>
@@ -62,7 +57,7 @@
             <input class="task" type="text" name="task_name" size="50" value={{$search->task_name}}>
           </td>
           <td>
-            <select name="tag_id" class="select-tag" value={{$search->task_name}}>
+            <select name="tag_id" class="select-tag" value={{$search->tag_id}}>
               <option value="0"></option>
               <option value="1">家事</option>
               <option value="2">勉強</option>
@@ -88,9 +83,3 @@
   </div>
 </body>
 </html>
-①　ユーザー認証を設定してindexアクションで$userを設定してviewに送ろうとしたが送れないがどうすればよいか
-②　$searchsをviewに送れないためどうすればよいか
-③　search.bladeで作成日を設定する際$searchではcreated_atを引っ張れないためどうすればよいか
-④　明日までに現段階でどこを修正すればよいか
-
-以上4点多いですが、よろしくお願いします。

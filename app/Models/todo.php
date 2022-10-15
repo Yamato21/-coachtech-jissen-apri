@@ -9,7 +9,7 @@ class todo extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['task_name','id','created_at','updated_at','tag_id'];
+    protected $fillable = ['task_name','user_id','created_at','updated_at','tag_id'];
 
      public function tag(){
 		return $this->belongsTo('App\Models\Tag');
