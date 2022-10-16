@@ -16,7 +16,6 @@
       <div class="top">
         <div class="header">
           <h1 class="title">タスク検索</h1>
-         <p>「{{$user->name}}」でログイン中</p>
           <form method="post" action="/logout">
             @csrf
             <p class="login"></p>
@@ -47,17 +46,18 @@
           <th class="tag_tag">タグ</th>
           <th class="kousin">更新</th>
           <th class="sakujyo">削除</th>
-        </tr>
+        </tr> 
+        @foreach($todos as $todo)
         <tr>
-        @foreach($searchs as $search)
-          <td>{{$search->created_at}}</td>
+           <td></td>
           <td>
-          <form action="/update{{$index->id}}" method="post" class="Upd_form">
+          <form action="/update" method="post" class="Upd_form">
             @csrf
-            <input class="task" type="text" name="task_name" size="50" value={{$search->task_name}}>
+            <input class="task" type="text" name="task_name" size="50" value={{$todo->task_name}}>
           </td>
           <td>
-            <select name="tag_id" class="select-tag" value={{$search->tag_id}}>
+            <select name="tag_id" class="select-tag" value={{$todo->tag_id}}>
+        @endforeach
               <option value="0"></option>
               <option value="1">家事</option>
               <option value="2">勉強</option>
@@ -70,13 +70,12 @@
           </td>
           </form>
           <td>
-            <form action="/delete{{$index->id}}" method="post" >
+            <form action="/delete" method="post" >
              @csrf
               <button class="del">削除</button>
             </form>
           </td>
           </tr>
-         @endforeach
       </table>
       <a class="btn_back" href="/home">戻る</a>
     </div>

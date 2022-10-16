@@ -89,3 +89,4 @@
   </div>
 </body>
 </html>
+         <p>「{{$user->name}}」でログイン中</p>

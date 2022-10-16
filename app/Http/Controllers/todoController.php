@@ -24,7 +24,8 @@ class todoController extends Controller
     {
         $form = $request->all();
         todo::create($form);
-        return redirect('/');
+        return redirect('/home');
+        dd($request->all());
     }
 
     public function update(todoRequest $request)
@@ -48,27 +49,25 @@ class todoController extends Controller
         $tag_id = $request->input('tag_id');
         $param = [$task_name,$tag_id];
 
-         return view('search', [
-         'param' => $param,
-        ]);
+         return view('search',$param);
     }
 
       public function find(Request $request)
     {
        $task_name = $request->input('task_name');
        $tag_id = $request->input('tag_id');
+      
+       $todo = Todo::query();
+       $tags = Tag::all();
 
-       $user = Auth::user();
-
-        $searchs = Todo::where('task_name', 'LIKE', '%'.$task_name.'%',$task_name)->
-                         where('tag_id',$tag_id);
+       if ($search !== null) {
+        $todo->where('task_name','like','%'.$task_name.'%');
+}
+     if($searching !== null){
+            $todo->where('tag_id', $tag_id);
+}   
+    $todos = $todo->get();
         
-        $time = Todo::query()->where('created_at');
-
-        return view('search', [
-         'searchs' => $searchs,
-         'user' => $user,
-         'time' => $time
-        ]);
+     return view('search', ['todos' => $todos, 'tags' => $tags]);
 }
 }
