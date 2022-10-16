@@ -60,6 +60,8 @@ class todoController extends Controller
        $todo = Todo::query();
        $tags = Tag::all();
 
+       $user = Auth::user();
+
        if ($search !== null) {
         $todo->where('task_name','like','%'.$task_name.'%');
 }
